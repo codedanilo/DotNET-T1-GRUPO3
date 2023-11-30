@@ -373,8 +373,8 @@ static void FinalizarAtendimento(List<Atendimento> atendimentos)
             Console.WriteLine("8. Médicos em ordem decrescente da quantidade de atendimentos concluídos.");
             Console.WriteLine("9. Atendimentos cuja suspeita ou diagnóstico final contenham determinada palavra.");
             Console.WriteLine("10. Os 10 exames mais utilizados nos atendimentos.");
-            Console.WriteLine("11. Voltar ao Menu Principal");
-            Console.Write("Escolha um relatório (1-11): ");
+            Console.WriteLine("0. Voltar ao Menu Principal");
+            Console.Write("Escolha um relatório (1-10 ou 0 para voltar ao Menu Principal): ");
 
              if (int.TryParse(Console.ReadLine(), out int opcaoRelatorio))
         {
@@ -410,7 +410,7 @@ static void FinalizarAtendimento(List<Atendimento> atendimentos)
                 case 10:
                     Top10ExamesUtilizados(atendimentos);
                     break;
-                case 11:
+                case 0:
                     sair = true;
                     break;
                 default:
