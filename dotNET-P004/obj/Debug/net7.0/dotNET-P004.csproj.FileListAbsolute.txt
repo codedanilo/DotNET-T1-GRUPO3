@@ -1,0 +1,14 @@
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\bin\Debug\net7.0\dotNET-P004.exe
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\bin\Debug\net7.0\dotNET-P004.deps.json
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\bin\Debug\net7.0\dotNET-P004.runtimeconfig.json
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\bin\Debug\net7.0\dotNET-P004.dll
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\bin\Debug\net7.0\dotNET-P004.pdb
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\dotNET-P004.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\dotNET-P004.AssemblyInfoInputs.cache
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\dotNET-P004.AssemblyInfo.cs
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\dotNET-P004.csproj.CoreCompileInputs.cache
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\dotNET-P004.dll
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\refint\dotNET-P004.dll
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\dotNET-P004.pdb
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\dotNET-P004.genruntimeconfig.cache
+C:\Users\paulo_j9alsns\Documents\Grupo-dotNet\DotNET-T1-GRUPO3\dotNET-P004\obj\Debug\net7.0\ref\dotNET-P004.dll
