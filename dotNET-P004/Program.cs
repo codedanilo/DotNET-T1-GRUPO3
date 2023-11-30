@@ -275,6 +275,14 @@ public static bool ValidarCPF(string cpf)
 static void IniciarAtendimento(List<Atendimento> atendimentos, List<Medico> medicos, List<Paciente> pacientes)
 {
     Console.WriteLine("===== Iniciar Atendimento =====");
+
+    Console.Write("ID do Atendimento: ");
+    if (!int.TryParse(Console.ReadLine(), out int id))
+    {
+        Console.WriteLine("ID inválido.");
+        return;
+    }
+
     
     Console.Write("Suspeita Inicial: ");
     string suspeita = Console.ReadLine() ?? string.Empty; // Coalescência nula para evitar valor nulo
@@ -305,6 +313,7 @@ static void IniciarAtendimento(List<Atendimento> atendimentos, List<Medico> medi
     }
     
     Atendimento novoAtendimento = new Atendimento();
+    novoAtendimento.Id = id; // Atribuição do ID informado
     novoAtendimento.IniciarAtendimento(suspeita, inicio, medico, paciente);
     atendimentos.Add(novoAtendimento);
     
