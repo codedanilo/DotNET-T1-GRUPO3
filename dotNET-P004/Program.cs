@@ -105,13 +105,14 @@ class Program
 
         while (!sair)
         {
-            Console.WriteLine("===== Menu Principal =====");
-            Console.WriteLine("1. Cadastrar Médico");
-            Console.WriteLine("2. Cadastrar Paciente");
-            Console.WriteLine("3. Iniciar Atendimento");
-            Console.WriteLine("4. Finalizar Atendimento");
-            Console.WriteLine("5. Relatórios");
-            Console.WriteLine("6. Sair");
+            Console.WriteLine("======== Menu Principal =========|");
+            Console.WriteLine("|     1. Cadastrar Médico        |");
+            Console.WriteLine("|     2. Cadastrar Paciente      |");
+            Console.WriteLine("|     3. Iniciar Atendimento     |");
+            Console.WriteLine("|     4. Finalizar Atendimento   |");
+            Console.WriteLine("|     5. Relatórios              |");
+            Console.WriteLine("|     6. Sair                    |");
+            Console.WriteLine("|================================|");
             Console.Write("Escolha uma opção: ");
 
             if (int.TryParse(Console.ReadLine(), out int opcao))
@@ -362,18 +363,19 @@ static void FinalizarAtendimento(List<Atendimento> atendimentos)
 
         while (!sair)
         {
-            Console.WriteLine("===== Menu de Relatórios =====");
-            Console.WriteLine("1. Médicos com idade entre dois valores");
-            Console.WriteLine("2. Pacientes com idade entre dois valores");
-            Console.WriteLine("3. Pacientes do sexo informado pelo usuário");
-            Console.WriteLine("4. Pacientes em ordem alfabética");
-            Console.WriteLine("5. Pacientes cujos sintomas contenham texto informado pelo usuário");
-            Console.WriteLine("6. Médicos e Pacientes aniversariantes do mês informado");
-            Console.WriteLine("7. Atendimentos em aberto (sem finalizar) em ordem decrescente pela data de início.");
-            Console.WriteLine("8. Médicos em ordem decrescente da quantidade de atendimentos concluídos.");
-            Console.WriteLine("9. Atendimentos cuja suspeita ou diagnóstico final contenham determinada palavra.");
-            Console.WriteLine("10. Os 10 exames mais utilizados nos atendimentos.");
-            Console.WriteLine("0. Voltar ao Menu Principal");
+            Console.WriteLine("|==================================== Menu de Relatórios ================================== |");
+            Console.WriteLine("|        1. Médicos com idade entre dois valores                                            |");
+            Console.WriteLine("|        2. Pacientes com idade entre dois valores|                                         |");
+            Console.WriteLine("|        3. Pacientes do sexo informado pelo usuário                                        |");
+            Console.WriteLine("|        4. Pacientes em ordem alfabética                                                   |");
+            Console.WriteLine("|        5. Pacientes cujos sintomas contenham texto informado pelo usuário                 |");
+            Console.WriteLine("|        6. Médicos e Pacientes aniversariantes do mês informado                            |");
+            Console.WriteLine("|        7. Atendimentos em aberto (sem finalizar) em ordem decrescente pela data de início.|");
+            Console.WriteLine("|        8. Médicos em ordem decrescente da quantidade de atendimentos concluídos.          |");
+            Console.WriteLine("|        9. Atendimentos cuja suspeita ou diagnóstico final contenham determinada palavra.  |");
+            Console.WriteLine("|        10. Os 10 exames mais utilizados nos atendimentos.                                 |");
+            Console.WriteLine("|         0. Voltar ao Menu Principal                                                       |");
+            Console.WriteLine("============================================================================================|");
             Console.Write("Escolha um relatório (1-10 ou 0 para voltar ao Menu Principal): ");
 
              if (int.TryParse(Console.ReadLine(), out int opcaoRelatorio))
