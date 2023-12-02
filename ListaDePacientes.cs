@@ -11,7 +11,8 @@ namespace SistemaMedico{
 
     public List<Paciente> ListaPacientes{
         get{ return pacientes;}
-    }
+            set{pacientes = value;}
+        }
 
     public void AdicionarPaciente(Paciente paciente)
     {

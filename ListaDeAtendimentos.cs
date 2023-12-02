@@ -11,6 +11,7 @@ namespace SistemaMedico
 
         public List<Atendimento> ListaAtendimentos{
             get{ return listaAtendimentos;}
+            set{listaAtendimentos = value;}
         }
 
         public void AdicionarAtendimento(Atendimento novoAtendimento)

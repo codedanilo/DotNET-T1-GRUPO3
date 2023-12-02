@@ -79,7 +79,6 @@ namespace SistemaMedico
 
                     Console.WriteLine("Sintoma adicionado com sucesso!");
                 } while (true);
-
                 pacientes.AdicionarPaciente(novoPaciente);
                 Console.WriteLine("Paciente cadastrado com sucesso!");
             }

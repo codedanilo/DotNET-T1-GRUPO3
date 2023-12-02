@@ -11,6 +11,7 @@ namespace SistemaMedico{
 
         public List<Medico> ListaMedicos{
             get{ return medicos;}
+            set{medicos = value;}
         }
 
         public void AdicionarMedico(Medico medico)
