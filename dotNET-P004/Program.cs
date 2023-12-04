@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿﻿using dotNET_P004;
+using System.Globalization;
+
+CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("pt-BR");
