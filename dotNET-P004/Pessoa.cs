@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 namespace dotNET_P004 {
     public class Pessoa
     {
@@ -9,7 +7,7 @@ namespace dotNET_P004 {
             get { return DataNascimento; }
             set
             {
-                if (!ehDataValida(value.ToString()))
+                if (!Util.ehDataValida(value.ToString()))
                 {
                     throw new ArgumentException("Data inválida.");
                 }
@@ -20,7 +18,7 @@ namespace dotNET_P004 {
             get { return Cpf; }
             set
             {
-                if (value.Length != 11)
+                if (!Util.ehCpfValido(value))
                 {
                     throw new ArgumentException("O CPF deve conter 11 dígitos.");
                 }
@@ -32,19 +30,11 @@ namespace dotNET_P004 {
             get { return Sexo; }
             set
             {
-                if (value.ToLower() != "masculino" || value.ToLower() != "feminino")
+                if (!Util.ehSexoValido(value))
                 {
                     throw new ArgumentException("O sexo dever ser 'masculino' ou 'feminino'.");
                 }
             }
-        }
-
-        private bool ehDataValida(string value) 
-        {
-            Regex r = new Regex(@"(\d{2}\/\d{2}\/\d{4})");
-            string valueAsString = value.ToString()!;
-            
-            return r.Match(valueAsString).Success;
         }
     }
 }
