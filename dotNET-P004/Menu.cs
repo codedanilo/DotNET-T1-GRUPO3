@@ -9,7 +9,7 @@ public static class Menu
         
         while (true)
         {
-            Console.Clear();
+            //Console.Clear();
             CtrlMenu.MontaMenu(listaItens, "Sistema de Gerenciamento de Med Tech");
             opcao = CtrlMenu.ObterOpcao(listaItens.Count);
 
@@ -40,17 +40,17 @@ public static class Menu
         
         while (true)
         {
-            Console.Clear();
+            // Console.Clear();
             CtrlMenu.MontaMenu(listaItens, titulo);
             opcao = CtrlMenu.ObterOpcao(listaItens.Count);
 
             switch (opcao)
             {
                 case 1:
-                    Console.WriteLine("Em construção...");
+                    App.Cadastrar(ehMedico);
                     break;
                 case 2:
-                    Console.WriteLine("Em construção...");
+                    App.Listar(ehMedico);
                     break;
                 case 3:
                     Console.WriteLine("Em construção...");

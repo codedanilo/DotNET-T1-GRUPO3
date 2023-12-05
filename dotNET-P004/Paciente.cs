@@ -3,7 +3,8 @@ namespace dotNET_P004 {
     {
         public List<string> Sintomas { get; set; }
 
-        public Paciente()
+        public Paciente(string nome, DateTime dataNascimento, string cpf, string sexo)
+            : base(nome, dataNascimento,  cpf, sexo)
         {
             Sintomas = new List<string>();
         }

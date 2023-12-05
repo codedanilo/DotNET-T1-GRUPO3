@@ -1,13 +1,23 @@
 namespace dotNET_P004 {
     public class Pessoa
     {
-        public string Nome { get; set; }
+        public string Nome 
+        { 
+            get { return Nome; } 
+            set 
+            {
+                if (value.Trim().Length < 3)
+                {
+                    throw new ArgumentException("O nome deve conter pelo menos 3 caracteres.");
+                }
+            }
+        }
         public DateTime DataNascimento 
         { 
             get { return DataNascimento; }
             set
             {
-                if (!Util.ehDataValida(value.ToString()))
+                if (!Util.ehDataValida(value.ToString()) || value > DateTime.Now)
                 {
                     throw new ArgumentException("Data inválida.");
                 }
@@ -35,6 +45,14 @@ namespace dotNET_P004 {
                     throw new ArgumentException("O sexo dever ser 'masculino' ou 'feminino'.");
                 }
             }
+        }
+
+        public Pessoa(string nome, DateTime dataNascimento,  string cpf, string sexo)
+        {
+            this.Nome = nome;
+            this.DataNascimento = dataNascimento;
+            this.Cpf = cpf;
+            this.Sexo = sexo;
         }
     }
 }

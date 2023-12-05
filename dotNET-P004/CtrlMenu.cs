@@ -14,14 +14,23 @@ public static class CtrlMenu
     public static int ObterOpcao(int qtdeOpcoes)
     {
         int opcao = -1;
+
         while ((opcao < 1) || (opcao > qtdeOpcoes))
         {
-            Console.Write("\nSelecione uma opção: ");
-            opcao = int.Parse(Console.ReadLine()!); 
-            
-            if (opcao < 1 || opcao > qtdeOpcoes)
+            try
             {
-                Console.WriteLine("Opção inválida.");
+                Console.Write("\nSelecione uma opção: ");
+                opcao = int.Parse(Console.ReadLine()!); 
+                
+                if (opcao < 1 || opcao > qtdeOpcoes)
+                {
+                    throw new System.Exception("Opção inválida.");
+                }
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine(e.Message);
+                continue;
             }
         }
 

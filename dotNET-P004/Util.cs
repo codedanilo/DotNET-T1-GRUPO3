@@ -19,7 +19,8 @@ public static class Util
 
     public static bool ehSexoValido(string value)
     {
-        return value.ToLower() == "masculino" || value.ToLower() == "feminino";
+        return value.ToLower() == "m" || value.ToLower() == "masculino" 
+            || value.ToLower() == "f" || value.ToLower() == "feminino";
     }
 
     public static bool ehDataValida(DateTime dataInicio, DateTime dataFim)
