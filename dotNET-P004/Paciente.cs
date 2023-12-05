@@ -7,5 +7,10 @@ namespace dotNET_P004 {
         {
             Sintomas = new List<string>();
         }
+
+        public override string ToString()
+        {
+            return $"{Nome} \t {Cpf} \t {Sexo} \t {DataNascimento}";
+        }
     }
 }

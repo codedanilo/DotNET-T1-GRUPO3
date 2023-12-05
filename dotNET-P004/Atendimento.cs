@@ -29,5 +29,10 @@ namespace dotNET_P004 {
         public Medico MedicoResponsavel { get; set; }
         public Paciente Paciente { get; set; }
         public string DiagnosticoFinal { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Inicio} \t {Fim} \t {Paciente.Nome} \t {MedicoResponsavel.Nome}";
+        }
     }
 }
