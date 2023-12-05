@@ -132,6 +132,14 @@ namespace SistemaMedico
                 return;
             }
 
+            if(paciente.CPF == medico.CPF){
+                Console.WriteLine("Um médico não pode se auto-atender!");
+                Console.WriteLine("Pressione qualquer tecla para voltar ao Menu Principal...");
+                Console.ReadKey();
+                return;
+            }
+
+
             if (ListaDeAtendimentos.ObterAtendimentoAtivo(atendimentos, cpfPaciente, crmMedico) != null)
             {
                 Console.WriteLine($"Existe um atendimento ativo do Médico {medico.Nome} para com o paciente {paciente.Nome}!");
@@ -139,6 +147,8 @@ namespace SistemaMedico
                 Console.ReadKey();
                 return;
             }
+
+
 
             Console.Write("Suspeita Inicial: ");
             string? suspeitaInicial = Console.ReadLine() ?? "";
