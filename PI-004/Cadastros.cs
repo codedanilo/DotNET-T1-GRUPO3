@@ -42,7 +42,7 @@ namespace SistemaMedico
             Console.ReadKey();
         }
 
-        public static void CadastrarPaciente(ListaDePacientes pacientes)
+        public static void CadastrarPaciente(ListaDePacientes pacientes, ListaDePlanosDeSaude planosDeSaude)
         {
             Console.Clear();
 
@@ -59,28 +59,41 @@ namespace SistemaMedico
 
                 Console.Write("Sexo (opcional - pressione Enter para pular): ");
                 string? sexo = Console.ReadLine();
-                
+
+                Console.Write("Plano de Saúde: ");
+                string nomePlano = Console.ReadLine() ?? "";
+
+                PlanoDeSaude plano = planosDeSaude.ObterPlanoPorNome(nomePlano);
+
                 try
-                {   
-                    Paciente novoPaciente = string.IsNullOrWhiteSpace(sexo)
-                        ? new Paciente(nome, dataNascimento, cpf)
-                        : new Paciente(nome, dataNascimento, cpf, sexo);
-
-                    Console.WriteLine("Adicione os sintomas do paciente. Digite '0' para parar.");
-                    do
+                {
+                    if (plano != null)
                     {
-                        Console.Write("Sintoma: ");
-                        string? sintoma = Console.ReadLine() ?? "";
+                        Paciente novoPaciente = string.IsNullOrWhiteSpace(sexo)
+                            ? new Paciente(nome, dataNascimento, cpf, plano)
+                            : new Paciente(nome, dataNascimento, cpf, sexo, plano);
 
-                        if (sintoma.ToLower() == "0")
-                            break;
+                        Console.WriteLine("Adicione os sintomas do paciente. Digite '0' para parar.");
+                        do
+                        {
+                            Console.Write("Sintoma: ");
+                            string? sintoma = Console.ReadLine() ?? "";
 
-                        novoPaciente.AdicionarSintoma(sintoma);
+                            if (sintoma.ToLower() == "0")
+                                break;
 
-                        Console.WriteLine("Sintoma adicionado com sucesso!");
-                    } while (true);
-                    pacientes.AdicionarPaciente(novoPaciente);
-                    Console.WriteLine("Paciente cadastrado com sucesso!");
+                            novoPaciente.AdicionarSintoma(sintoma);
+
+                            Console.WriteLine("Sintoma adicionado com sucesso!");
+                        } while (true);
+
+                        pacientes.AdicionarPaciente(novoPaciente);
+                        Console.WriteLine("Paciente cadastrado com sucesso!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Plano de Saúde não encontrado. O paciente não será cadastrado.");
+                    }
                 }
                 catch (Exception ex)
                 {

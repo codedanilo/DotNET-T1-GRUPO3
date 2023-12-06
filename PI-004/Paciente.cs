@@ -1,9 +1,14 @@
+using System;
+using System.Collections.Generic;
+
 namespace SistemaMedico
 {
     public class Paciente : Pessoa
     {
         private string sexo = "NI";
         private List<string> sintomas = new List<string>();
+        private List<IPagamento> pagamentos = new List<IPagamento>();
+        private PlanoDeSaude planoDeSaude;
 
         public string Sexo
         {
@@ -27,6 +32,18 @@ namespace SistemaMedico
             set { sintomas = value; }
         }
 
+        public List<IPagamento> Pagamentos
+        {
+            get { return pagamentos; }
+            set { pagamentos = value; }
+        }
+
+        public PlanoDeSaude PlanoDeSaude
+        {
+            get { return planoDeSaude; }
+            set { planoDeSaude = value; }
+        }
+
         public void AdicionarSintoma(string sintoma)
         {
             if (string.IsNullOrWhiteSpace(sintoma))
@@ -37,21 +54,28 @@ namespace SistemaMedico
             sintomas.Add(sintoma);
         }
 
-        public Paciente(string nome, DateTime dataNascimento, string cpf, string? sexo = "NI")
+        public void AdicionarPagamento(IPagamento pagamento)
+        {
+            pagamentos.Add(pagamento);
+        }
+        public Paciente(string nome, DateTime dataNascimento, string cpf, PlanoDeSaude planoDeSaude, string? sexo = "NI")
             : base(nome, dataNascimento, cpf)
         {
-            if (!sexo.Equals("NI") && !Validacoes.ValidarSexo(sexo)){
+            if (!sexo.Equals("NI") && !Validacoes.ValidarSexo(sexo))
+            {
                 throw new ArgumentException("Inválida inserção de sexo (Insira (masculino) ou (feminino))");
             }
 
             Sintomas = new List<string>();
+            PlanoDeSaude = planoDeSaude; // Atribui o plano de saúde durante a criação do paciente
         }
 
         public override string ToString()
         {
             string sintomasStr = Sintomas.Count > 0 ? string.Join(", ", Sintomas) : "Não informado";
-            return $"Paciente:\nNome: {Nome}\nData de Nascimento: {DataNascimento:dd/MM/yyyy}\nCPF: {CPF}\nSexo: {Sexo}\nSintomas: {sintomasStr}";
+            string planoStr = PlanoDeSaude != null ? PlanoDeSaude.ToString() : "Sem plano de saúde";
+            
+            return $"Paciente:\nNome: {Nome}\nData de Nascimento: {DataNascimento:dd/MM/yyyy}\nCPF: {CPF}\nSexo: {Sexo}\nSintomas: {sintomasStr}\nPlano de Saúde: {planoStr}";
         }
-
     }
 }

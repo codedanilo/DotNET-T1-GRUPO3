@@ -91,6 +91,7 @@ namespace SistemaMedico
                         break;
                     case "3":
                         Cadastros.CadastrarPlanoDeSaude(planosDeSaude);
+                        break;
                     case "0":
                         MenuPrincipal();
                         break;
@@ -123,7 +124,7 @@ namespace SistemaMedico
                     case "2":
                         Atendimento.CadastraExameNoAtendimento(pacientes,medicos,atendimentos);
                         break;
-                   case "3":
+                    case "3":
                         Atendimento.FinalizarAtendimentoAtivo(atendimentos);
                         break;                    
                     case "0":
