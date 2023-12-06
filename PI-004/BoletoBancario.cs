@@ -1,8 +1,6 @@
-using System;
-
 namespace SistemaMedico
 {
-    public class CartaoDeCredito : IPagamento
+    public class BoletoBancario : IPagamento
     {
         private string descricao;
         private double valorBruto;
@@ -40,7 +38,7 @@ namespace SistemaMedico
 
         public void ImprimirRecibo()
         {
-            Console.WriteLine($"Recibo para pagamento com cartão de crédito:");
+            Console.WriteLine($"Recibo para pagamento com boleto bancário:");
             Console.WriteLine($"Descrição: {descricao}");
             Console.WriteLine($"Valor Bruto: {valorBruto:C}");
             Console.WriteLine($"Desconto: {desconto:C}");
@@ -50,7 +48,7 @@ namespace SistemaMedico
 
         public void RealizarPagamento()
         {
-            Console.WriteLine("Pagamento com cartão de crédito realizado com sucesso!");
+            Console.WriteLine("Pagamento via boleto bancário realizado com sucesso!");
         }
     }
 }

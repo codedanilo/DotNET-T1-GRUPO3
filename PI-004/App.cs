@@ -5,12 +5,14 @@ namespace SistemaMedico
         private ListaDeMedicos medicos;
         private ListaDePacientes pacientes;
         private ListaDeAtendimentos atendimentos;
+        private ListaDePlanosDeSaude planosDeSaude;
 
         public App()
         {
             medicos = new ListaDeMedicos();
             pacientes = new ListaDePacientes();
             atendimentos = new ListaDeAtendimentos();
+            planosDeSaude = new ListaDePlanosDeSaude();
         }
 
         public void Run()
@@ -74,6 +76,7 @@ namespace SistemaMedico
                 Console.WriteLine("---- Menu de Cadastro ----");
                 Console.WriteLine("1. Cadastrar Médico");
                 Console.WriteLine("2. Cadastrar Paciente");
+                Console.WriteLine("3. Cadastrar Plano De Saúde");
                 Console.WriteLine("0. Voltar ao Menu Principal");
                 Console.Write("Escolha uma opção: ");
                 opcao = Console.ReadLine() ?? "";
@@ -86,6 +89,8 @@ namespace SistemaMedico
                     case "2":
                         Cadastros.CadastrarPaciente(pacientes);
                         break;
+                    case "3":
+                        Cadastros.CadastrarPlanoDeSaude(planosDeSaude);
                     case "0":
                         MenuPrincipal();
                         break;
