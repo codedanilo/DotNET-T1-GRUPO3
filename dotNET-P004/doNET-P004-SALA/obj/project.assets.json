@@ -1,0 +1,66 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net8.0": []
+  },
+  "packageFolders": {
+    "C:\\Users\\edu__\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\edu__\\OneDrive\\Documentos\\GitHub\\DotNET-T1-GRUPO3\\dotNET-P004\\doNET-P004-SALA\\doNET-P004-SALA.csproj",
+      "projectName": "doNET-P004-SALA",
+      "projectPath": "C:\\Users\\edu__\\OneDrive\\Documentos\\GitHub\\DotNET-T1-GRUPO3\\dotNET-P004\\doNET-P004-SALA\\doNET-P004-SALA.csproj",
+      "packagesPath": "C:\\Users\\edu__\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\edu__\\OneDrive\\Documentos\\GitHub\\DotNET-T1-GRUPO3\\dotNET-P004\\doNET-P004-SALA\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\edu__\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
