@@ -2,9 +2,18 @@ namespace dotNET_P004;
 
 public static class CtrlMenu
 {
-    public static void MontaMenu(List<string> listaItens, string titulo)
+    public static void MontaMenu(List<string> listaItens, string titulo, string subtitulo = "")
     {
-        Console.WriteLine($"============================== {titulo} ==============================\n");
+        if (titulo != "")
+        {
+            Console.WriteLine($"============================== {titulo} ==============================\n");
+        }
+
+        if (subtitulo != "")
+        {
+            Console.WriteLine(subtitulo);
+        }
+
         foreach (var item in listaItens)
         {
             Console.WriteLine(item);
@@ -15,14 +24,14 @@ public static class CtrlMenu
     {
         int opcao = -1;
 
-        while ((opcao < 1) || (opcao > qtdeOpcoes))
+        while ((opcao < 0) || (opcao >= qtdeOpcoes))
         {
             try
             {
                 Console.Write("\nSelecione uma opção: ");
                 opcao = int.Parse(Console.ReadLine()!); 
                 
-                if (opcao < 1 || opcao > qtdeOpcoes)
+                if (opcao < 0 || opcao >= qtdeOpcoes)
                 {
                     throw new System.Exception("Opção inválida.");
                 }

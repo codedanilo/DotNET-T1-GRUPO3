@@ -4,6 +4,19 @@ namespace dotNET_P004;
 
 public static class App
 {
+    public static void InicializarMockup()
+    {
+        foreach (var medico in Mock.CriarMedicosAleatorios())
+        {
+            Service.AddMedico(medico);  
+        }
+
+        foreach (var paciente in Mock.CriarPacientesAleatorios())
+        {
+            Service.AddPaciente(paciente);
+        }
+    }
+
     public static void Cadastrar(bool ehMedico)
     {
         string titulo = ehMedico ? "Medico" : "Paciente";
@@ -64,28 +77,22 @@ public static class App
 
         try
         {
-            if (Service.listaMedicos.Count > 0 || Service.listaPacientes.Count > 0)
+            if ((!ehMedico && Service.listaPacientes.Count == 0) 
+                || (ehMedico && Service.listaMedicos.Count == 0))
             {
-                Console.Write("Nome \t Data Nascimento \t CPF \t Sexo ");
+                throw new System.Exception("Não existem dados cadastrados para serem exibidos");
+            }
 
-                if (ehMedico && Service.listaMedicos.Count > 0)
-                {
-                    Console.WriteLine("\t CRM");
-                    Service.ListarMedicos();
-                }
-                else if (!ehMedico && Service.listaPacientes.Count > 0)
-                {
-                    Console.WriteLine("");
-                    Service.ListarPacientes();
-                }
-                else
-                {
-                    throw new System.Exception("Não existem dados cadastrados para serem exibidos");
-                }
+            Console.Write("Nome \t\t Data Nasc. \t CPF \t\t Sexo ");
+            if (ehMedico)
+            {
+                Console.WriteLine("\t\t CRM");
+                Service.ListarMedicos();
             }
             else
             {
-                throw new System.Exception("Não existem dados cadastrados para serem exibidos");
+                Console.WriteLine("");
+                Service.ListarPacientes();
             }
         }
         catch (System.Exception e)
@@ -96,44 +103,76 @@ public static class App
 
     public static void Remover(bool ehMedico)
     {
+        List<string> listaItens = new List<string>();
         string titulo =  ehMedico ? "Medico" : "Paciente";
-        Console.WriteLine($"============================== Remover {titulo} ==============================\n");
+        int selecao, opcao;
 
         try
         {
-            if (Service.listaMedicos.Count > 0 || Service.listaPacientes.Count > 0)
+            if ((!ehMedico && Service.listaPacientes.Count == 0) 
+                || (ehMedico && Service.listaMedicos.Count == 0))
             {
-                Console.Write("Nome \t Data Nascimento \t CPF \t Sexo ");
+                throw new System.Exception("Não existem dados cadastrados para serem exibidos");
+            }
 
-                if (ehMedico && Service.listaMedicos.Count > 0)
+            listaItens = ehMedico ? retornaListaItensMenu(Service.listaMedicos) 
+                : listaItens = retornaListaItensMenu(Service.listaPacientes);
+
+            string cabecalho = "      Nome \t\t Data Nasc. \t CPF \t\t Sexo ";
+            cabecalho += ehMedico ? "\t\t CRM" : "";
+
+            while (true)
+            {
+                CtrlMenu.MontaMenu(listaItens, "Remover " + titulo, cabecalho);
+                selecao = CtrlMenu.ObterOpcao(listaItens.Count);
+
+                if (selecao != 0)
                 {
-                    Console.WriteLine("\t CRM");
-                    for (int i = 0; i < Service.listaMedicos.Count; i++)
-                    {
-                        Console.WriteLine("[ " + (i + 1) + " ] " + Service.listaMedicos[i].ToString() + "\n");
-                    }
-                }
-                else if (!ehMedico && Service.listaPacientes.Count > 0)
-                {
-                    Console.WriteLine("");
-                    for (int i = 0; i < Service.listaPacientes.Count; i++)
-                    {
-                        Console.WriteLine("[ " + (i + 1) + " ] " + Service.listaPacientes[i].ToString() + "\n");
-                    }
+                    string nome = ehMedico ? Service.listaMedicos[selecao - 1].Nome : Service.listaPacientes[selecao - 1].Nome;
+                    Console.WriteLine($"\nDeseja realmente remover o {titulo} {nome}?");
+                    CtrlMenu.MontaMenu(new List<string> { "[ 1 ] Sim", "[ 2 ] Não" }, "");
+                    opcao = CtrlMenu.ObterOpcao(2);
                 }
                 else
                 {
-                    throw new System.Exception("Não existem dados cadastrados para serem exibidos");
+                    break;
                 }
-            }
-            else
-            {
-                throw new System.Exception("Não existem dados cadastrados para serem exibidos");
+
+                if (opcao == 1)
+                {
+                    if (ehMedico)
+                    {
+                        Service.listaMedicos.RemoveAt(selecao - 1);
+                        listaItens = retornaListaItensMenu(Service.listaMedicos);
+
+                    }
+                    else
+                    {
+                        Service.listaPacientes.RemoveAt(selecao - 1);
+                        listaItens = retornaListaItensMenu(Service.listaPacientes);
+                    }
+                        
+                    Console.WriteLine($"\n{titulo} removido com sucesso.\n");
+                }
             }
         }
         catch (System.Exception e)
         {
             Console.WriteLine(e.Message);
         }
+    }
+
+    private static List<string> retornaListaItensMenu<T>(List<T> listaObjetos)
+    {
+        List<string> listaItens = new List<string>();
+
+        for (int i = 0; i < listaObjetos.Count; i++)
+        {
+            listaItens.Add("[ " + (i + 1) + " ] " + listaObjetos[i]!.ToString());
+        }
+
+        listaItens.Add("\n[ 0 ] Sair");
+
+        return listaItens;
     }
 }

@@ -4,7 +4,7 @@ public static class Menu
 {
     public static void MenuPrincipal()
     {
-        List<string> listaItens = new List<string> { "[ 1 ] Pacientes", "[ 2 ] Medicos", "[ 3 ] Atendimentos", "[ 4 ] Sair" };
+        List<string> listaItens = new List<string> { "[ 1 ] Pacientes", "[ 2 ] Medicos", "[ 3 ] Atendimentos", "[ 0 ] Sair" };
         int opcao;
         
         while (true)
@@ -24,7 +24,7 @@ public static class Menu
                 case 3:
                     Console.WriteLine("Em construção...");
                     break;
-                case 4:
+                case 0:
                     Console.WriteLine("\nFinalizando programa...");
                     Environment.Exit(0);
                     break;
@@ -34,7 +34,7 @@ public static class Menu
 
     public static void MenuMedicosPacientes(bool ehMedico)
     {
-        List<string> listaItens = new List<string> { "[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 3 ] Remover", "[ 4 ] Menu Principal" };
+        List<string> listaItens = new List<string> { "[ 1 ] Cadastrar", "[ 2 ] Listar", "[ 3 ] Remover", "[ 0 ] Menu Principal" };
         string titulo = ehMedico ? "Medicos" : "Pacientes";
         int opcao;
         
@@ -53,9 +53,9 @@ public static class Menu
                     App.Listar(ehMedico);
                     break;
                 case 3:
-                    Console.WriteLine("Em construção...");
+                    App.Remover(ehMedico);
                     break;
-                case 4:
+                case 0:
                     MenuPrincipal();
                     break;
             }

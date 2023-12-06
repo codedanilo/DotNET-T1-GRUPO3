@@ -11,7 +11,7 @@ namespace dotNET_P004 {
 
         public override string ToString()
         {
-            return $"{Nome} \t {Cpf} \t {Sexo} \t {DataNascimento} \t {Crm}";
+            return $"{Nome} \t {DataNascimento.ToString("dd/MM/yyyy")} \t {Cpf} \t {Sexo} \t {Crm}";
         }
     }
 }
