@@ -9,6 +9,11 @@ namespace SistemaMedico
             planosDeSaude = new List<PlanoDeSaude>();
         }
 
+        public List<PlanoDeSaude> PlanosDeSaude{
+        get{ return planosDeSaude;}
+            set{planosDeSaude = value;}
+        }
+
         public void AdicionarPlanoDeSaude(PlanoDeSaude plano)
         {
             planosDeSaude.Add(plano);
