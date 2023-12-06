@@ -20,6 +20,8 @@ public class Paciente : Pessoa
 {
     public string? Sexo { get; set; }
     public string? Sintomas { get; set; }
+    public PlanoSaude? PlanoSaude { get; set; } // Associação com Plano de Saúde
+    public List<IPagamento>? Pagamentos { get; set; } // Lista de Pagamentos
 }
 
 public class Validacoes
@@ -92,6 +94,31 @@ public class Atendimento
     }
 }
 
+public class PlanoSaude
+{
+    public string? Titulo { get; set; }
+    public double ValorPorMes { get; set; }
+}
+
+public interface IPagamento
+{
+    string Tipo { get; }
+    string Descricao { get; }
+    double ValorBruto { get; }
+    double Desconto { get; }
+    DateTime DataHora { get; }
+}
+
+public class Pagamento : IPagamento
+{
+    public string Tipo { get; set; }
+    public string Descricao { get; set; }
+    public double ValorBruto { get; set; }
+    public double Desconto { get; set; }
+    public DateTime DataHora { get; set; }
+}
+
+
 
 class Program
 {
@@ -100,19 +127,21 @@ class Program
         List<Medico> medicos = new List<Medico>();
         List<Paciente> pacientes = new List<Paciente>();
         List<Atendimento> atendimentos = new List<Atendimento>();
+        List<PlanoSaude> planosDeSaude = new List<PlanoSaude>(); // Lista de Planos de Saúde
 
         bool sair = false;
 
         while (!sair)
         {
-            Console.WriteLine("======== Menu Principal =========|");
-            Console.WriteLine("|     1. Cadastrar Médico        |");
-            Console.WriteLine("|     2. Cadastrar Paciente      |");
-            Console.WriteLine("|     3. Iniciar Atendimento     |");
-            Console.WriteLine("|     4. Finalizar Atendimento   |");
-            Console.WriteLine("|     5. Relatórios              |");
-            Console.WriteLine("|     6. Sair                    |");
-            Console.WriteLine("|================================|");
+            Console.WriteLine("===== Menu Principal =====");
+            Console.WriteLine("1. Cadastrar Médico");
+            Console.WriteLine("2. Cadastrar Paciente");
+            Console.WriteLine("3. Cadastrar Plano de Saúde");
+            Console.WriteLine("4. Registrar Pagamento para Paciente");
+            Console.WriteLine("5. Iniciar Atendimento");
+            Console.WriteLine("6. Finalizar Atendimento");
+            Console.WriteLine("7. Menu Relatórios");
+            Console.WriteLine("0. Sair");
             Console.Write("Escolha uma opção: ");
 
             if (int.TryParse(Console.ReadLine(), out int opcao))
@@ -126,15 +155,21 @@ class Program
                             CadastrarPaciente(pacientes);
                             break;
                         case 3:
-                            IniciarAtendimento(atendimentos, medicos, pacientes);
+                            CadastrarPlanoSaude(planosDeSaude);
                             break;
                         case 4:
-                            FinalizarAtendimento(atendimentos);
+                            RegistrarPagamento(pacientes);
                             break;
                         case 5:
-                            MenuRelatorios(medicos, pacientes, atendimentos);
+                            IniciarAtendimento(atendimentos, medicos, pacientes);
                             break;
                         case 6:
+                            FinalizarAtendimento(atendimentos);
+                            break;
+                        case 7:
+                            MenuRelatorios(medicos, pacientes, atendimentos);
+                            break;
+                        case 0:
                             sair = true;
                             break;
                 }
@@ -353,6 +388,81 @@ static void FinalizarAtendimento(List<Atendimento> atendimentos)
     
     Console.WriteLine("Atendimento finalizado com sucesso!");
 }
+
+ static void CadastrarPlanoSaude(List<PlanoSaude> planosDeSaude)
+    {
+        PlanoSaude novoPlano = new PlanoSaude();
+
+        Console.WriteLine("===== Cadastro de Plano de Saúde =====");
+        Console.Write("Título do Plano: ");
+        novoPlano.Titulo = Console.ReadLine();
+
+        Console.Write("Valor por Mês: ");
+        if (double.TryParse(Console.ReadLine(), out double valor))
+        {
+            novoPlano.ValorPorMes = valor;
+        }
+        else
+        {
+            Console.WriteLine("Valor inválido para o plano de saúde.");
+            return;
+        }
+
+        planosDeSaude.Add(novoPlano);
+        Console.WriteLine("Plano de saúde cadastrado com sucesso!");
+    }
+
+    static void RegistrarPagamento(List<Paciente> pacientes)
+    {
+        Console.WriteLine("===== Registrar Pagamento para Paciente =====");
+        Console.Write("Nome do Paciente: ");
+        string nomePaciente = Console.ReadLine();
+
+        var paciente = pacientes.FirstOrDefault(p => p.Nome == nomePaciente);
+        if (paciente == null)
+        {
+            Console.WriteLine("Paciente não encontrado.");
+            return;
+        }
+
+        Pagamento novoPagamento = new Pagamento();
+
+        Console.Write("Tipo de Pagamento (Cartão de Crédito/Boleto Bancário/Dinheiro em Espécie): ");
+        novoPagamento.Tipo = Console.ReadLine();
+
+        Console.Write("Descrição: ");
+        novoPagamento.Descricao = Console.ReadLine();
+
+        Console.Write("Valor Bruto: ");
+        if (double.TryParse(Console.ReadLine(), out double valorBruto))
+        {
+            novoPagamento.ValorBruto = valorBruto;
+        }
+        else
+        {
+            Console.WriteLine("Valor inválido para o pagamento.");
+            return;
+        }
+
+        Console.Write("Desconto: ");
+        if (double.TryParse(Console.ReadLine(), out double desconto))
+        {
+            novoPagamento.Desconto = desconto;
+        }
+        else
+        {
+            Console.WriteLine("Valor inválido para o desconto.");
+            return;
+        }
+
+        novoPagamento.DataHora = DateTime.Now;
+
+        paciente.Pagamentos ??= new List<IPagamento>(); // Se a lista de pagamentos for nula, inicializa ela
+
+        paciente.Pagamentos.Add(novoPagamento);
+        Console.WriteLine("Pagamento registrado com sucesso para o paciente!");
+    }
+
 
 
 
