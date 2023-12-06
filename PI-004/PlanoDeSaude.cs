@@ -1,12 +1,31 @@
-public class PlanoDeSaude
-{
-    public string Titulo { get; set; }
-
-    public double ValorPorMes { get; set; }
-
-    public PlanoDeSaude(string titulo, double valorPorMes)
+namespace SistemaMedico{
+    public class PlanoDeSaude
     {
-        Titulo = titulo;
-        ValorPorMes = valorPorMes;
+        private string titulo;
+        private double valorPorMes;
+
+        public string Titulo
+        {
+            get { return titulo; }
+            set { titulo = value; }
+        }
+
+        public double ValorPorMes
+        {
+            get { return valorPorMes; }
+            set { valorPorMes = value; }
+        }
+
+        public PlanoDeSaude(string titulo, double valorPorMes)
+        {
+            Titulo = titulo;
+            ValorPorMes = valorPorMes;
+        }
+
+        public override string ToString()
+        {
+            return $"Plano de Saúde: {Titulo}\nValor por mês: {ValorPorMes:C}";
+        }
     }
+
 }
