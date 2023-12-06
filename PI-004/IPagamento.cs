@@ -8,4 +8,5 @@ public interface IPagamento
     double CalcularValorComDesconto();
     void ImprimirRecibo();
     void RealizarPagamento();
+    
 }

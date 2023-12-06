@@ -73,7 +73,7 @@ namespace SistemaMedico
         public override string ToString()
         {
             string sintomasStr = Sintomas.Count > 0 ? string.Join(", ", Sintomas) : "Não informado";
-            string planoStr = PlanoDeSaude != null ? PlanoDeSaude.ToString() : "Sem plano de saúde";
+            string planoStr = PlanoDeSaude.ToString();
 
             string pagamentosStr = Pagamentos.Count > 0
                 ? "\nPagamentos:\n" + string.Join("\n", Pagamentos.Select(p => p.ToString()))
