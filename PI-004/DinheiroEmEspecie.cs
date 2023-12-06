@@ -50,5 +50,11 @@ namespace SistemaMedico
         {
             Console.WriteLine("Pagamento em dinheiro realizado com sucesso!");
         }
+
+        public override string ToString()
+        {
+            return $"Dinheiro em espécie:\nDescrição: {Descricao}\nValor Bruto: {ValorBruto:C}\nDesconto: {Desconto:C}\nData e Hora: {DataHora}";
+        }
+
     }
 }

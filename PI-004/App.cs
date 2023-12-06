@@ -20,6 +20,7 @@ namespace SistemaMedico
             medicos.ListaMedicos = Persistencia.CarregarMedicos();
             pacientes.ListaPacientes = Persistencia.CarregarPacientes();
             atendimentos.ListaAtendimentos = Persistencia.CarregarAtendimento();
+            planosDeSaude.PlanosDeSaude = Persistencia.CarregarPlanosDeSaude();
             MenuPrincipal();
         }
 
@@ -33,6 +34,7 @@ namespace SistemaMedico
                 Console.WriteLine("2. Atendimentos");
                 Console.WriteLine("3. Relatórios");
                 Console.WriteLine("4. Salvar Dados");
+                Console.WriteLine("5. Realizar Pagamento");
                 Console.WriteLine("0. Sair");
                 Console.Write("Escolha uma opção: ");
                 opcao = Console.ReadLine() ?? "";
@@ -53,9 +55,13 @@ namespace SistemaMedico
                             Persistencia.GravarMedicos(medicos);
                             Persistencia.GravarPacientes(pacientes);
                             Persistencia.GravarAtendimentos(atendimentos);
+                            Persistencia.GravarPlanosDeSaude(planosDeSaude);
                         }catch (Exception ex){
                             Console.WriteLine($"Erro ao Salvar dados: {ex.Message}");  
                         }
+                        break;
+                    case "5":
+                        Pagamentos.RealizarPagamento(pacientes);
                         break;
                     case "0":
                         Console.WriteLine("Saindo do sistema. Até mais!");
@@ -87,7 +93,7 @@ namespace SistemaMedico
                         Cadastros.CadastrarMedico(medicos);
                         break;
                     case "2":
-                        Cadastros.CadastrarPaciente(pacientes);
+                        Cadastros.CadastrarPaciente(pacientes,planosDeSaude);
                         break;
                     case "3":
                         Cadastros.CadastrarPlanoDeSaude(planosDeSaude);

@@ -50,5 +50,10 @@ namespace SistemaMedico
         {
             Console.WriteLine("Pagamento via boleto bancário realizado com sucesso!");
         }
+
+        public override string ToString()
+        {
+            return $"Boleto bancário:\nDescrição: {Descricao}\nValor Bruto: {ValorBruto:C}\nDesconto: {Desconto:C}\nData e Hora: {DataHora}";
+        }
     }
 }

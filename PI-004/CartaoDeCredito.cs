@@ -52,5 +52,10 @@ namespace SistemaMedico
         {
             Console.WriteLine("Pagamento com cartão de crédito realizado com sucesso!");
         }
+
+        public override string ToString()
+        {
+            return $"Cartão de Crédito:\nDescrição: {Descricao}\nValor Bruto: {ValorBruto:C}\nDesconto: {Desconto:C}\nData e Hora: {DataHora}";
+        }
     }
 }

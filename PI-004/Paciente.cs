@@ -67,15 +67,20 @@ namespace SistemaMedico
             }
 
             Sintomas = new List<string>();
-            PlanoDeSaude = planoDeSaude; // Atribui o plano de saúde durante a criação do paciente
+            PlanoDeSaude = planoDeSaude;
         }
 
         public override string ToString()
         {
             string sintomasStr = Sintomas.Count > 0 ? string.Join(", ", Sintomas) : "Não informado";
             string planoStr = PlanoDeSaude != null ? PlanoDeSaude.ToString() : "Sem plano de saúde";
-            
-            return $"Paciente:\nNome: {Nome}\nData de Nascimento: {DataNascimento:dd/MM/yyyy}\nCPF: {CPF}\nSexo: {Sexo}\nSintomas: {sintomasStr}\nPlano de Saúde: {planoStr}";
+
+            string pagamentosStr = Pagamentos.Count > 0
+                ? "\nPagamentos:\n" + string.Join("\n", Pagamentos.Select(p => p.ToString()))
+                : "Sem pagamentos";
+
+            return $"Paciente:\nNome: {Nome}\nData de Nascimento: {DataNascimento:dd/MM/yyyy}\nCPF: {CPF}\nSexo: {Sexo}\nSintomas: {sintomasStr}\nPlano de Saúde: {planoStr}{pagamentosStr}";
         }
+
     }
 }

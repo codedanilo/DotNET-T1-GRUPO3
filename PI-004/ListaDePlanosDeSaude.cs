@@ -29,5 +29,11 @@ namespace SistemaMedico
             }
         }
 
+
+        public PlanoDeSaude ObterPlanoPorNome(string nomePlano)
+        {
+            return planosDeSaude.FirstOrDefault(plano => plano.Titulo == nomePlano);
+        }
+
     }
 }

@@ -1,1 +1,1 @@
-[{"Sexo":"NI","Sintomas":["GRIPE","FEBRE"],"Nome":"JOAO","CPF":"04999695537","DataNascimento":"1998-07-12T00:00:00"}]
+[{"Sexo":"NI","Sintomas":["GRIPE","FEBRE"],"Pagamentos":[],"PlanoDeSaude":null,"Nome":"JOAO","CPF":"04999695537","DataNascimento":"1998-07-12T00:00:00"},{"Sexo":"NI","Sintomas":["gripe","coriza"],"Pagamentos":[{"Descricao":"pagamento unimed","ValorBruto":50,"Desconto":10,"DataHora":"2023-12-06T11:19:40.8476971-03:00"}],"PlanoDeSaude":{"Titulo":"unimed","ValorPorMes":50},"Nome":"alemao","CPF":"09860932549","DataNascimento":"1942-12-12T00:00:00"}]

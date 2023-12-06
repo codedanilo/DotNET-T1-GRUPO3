@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 
 namespace SistemaMedico
@@ -5,21 +8,25 @@ namespace SistemaMedico
     public static class Persistencia
     {
         private static string CaminhoMedicos = "./BancoDeDados/medicos.json";
-        private static string CaminhooPacientes = "./BancoDeDados/pacientes.json";
+        private static string CaminhoPacientes = "./BancoDeDados/pacientes.json";
         private static string CaminhoAtendimentos = "./BancoDeDados/atendimentos.json";
+        private static string CaminhoPlanosDeSaude = "./BancoDeDados/planosDeSaude.json";
 
         public static void GravarMedicos(ListaDeMedicos medicos) => GravarLista(medicos.ListaMedicos, CaminhoMedicos);
 
         public static List<Medico> CarregarMedicos() => CarregarLista<Medico>(CaminhoMedicos);
 
-        public static void GravarPacientes(ListaDePacientes pacientes) => GravarLista(pacientes.ListaPacientes, CaminhooPacientes);
+        public static void GravarPacientes(ListaDePacientes pacientes) => GravarLista(pacientes.ListaPacientes, CaminhoPacientes);
 
-        public static List<Paciente> CarregarPacientes() => CarregarLista<Paciente>(CaminhooPacientes);
+        public static List<Paciente> CarregarPacientes() => CarregarLista<Paciente>(CaminhoPacientes);
 
         public static void GravarAtendimentos(ListaDeAtendimentos atendimentos) => GravarLista(atendimentos.ListaAtendimentos, CaminhoAtendimentos);
 
         public static List<Atendimento> CarregarAtendimento() => CarregarLista<Atendimento>(CaminhoAtendimentos);
 
+        public static void GravarPlanosDeSaude(ListaDePlanosDeSaude planosDeSaude) => GravarLista(planosDeSaude.PlanosDeSaude, CaminhoPlanosDeSaude);
+
+        public static List<PlanoDeSaude> CarregarPlanosDeSaude() => CarregarLista<PlanoDeSaude>(CaminhoPlanosDeSaude);
 
         private static void GravarLista<T>(List<T> lista, string caminhoArquivo)
         {

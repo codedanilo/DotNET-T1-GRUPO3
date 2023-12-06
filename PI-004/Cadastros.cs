@@ -71,7 +71,7 @@ namespace SistemaMedico
                     {
                         Paciente novoPaciente = string.IsNullOrWhiteSpace(sexo)
                             ? new Paciente(nome, dataNascimento, cpf, plano)
-                            : new Paciente(nome, dataNascimento, cpf, sexo, plano);
+                            : new Paciente(nome, dataNascimento, cpf, plano , sexo);
 
                         Console.WriteLine("Adicione os sintomas do paciente. Digite '0' para parar.");
                         do
