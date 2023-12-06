@@ -1,5 +1,3 @@
-using System;
-
 namespace SistemaMedico
 {
     public class CartaoDeCredito : IPagamento
@@ -57,5 +55,6 @@ namespace SistemaMedico
         {
             return $"Cartão de Crédito:\nDescrição: {Descricao}\nValor Bruto: {ValorBruto:C}\nDesconto: {Desconto:C}\nData e Hora: {DataHora}";
         }
+
     }
 }
